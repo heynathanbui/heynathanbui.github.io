@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 200">
+  <defs><linearGradient id="r" x1="0" x2="1"><stop offset="0" stop-color="#a8141c"/><stop offset=".5" stop-color="#dd2a2f"/><stop offset="1" stop-color="#9a1018"/></linearGradient>
+  <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#a77a1c"/><stop offset=".5" stop-color="#ffe39a"/><stop offset="1" stop-color="#b8892a"/></linearGradient></defs>
+  <rect x="6" y="6" width="128" height="188" rx="10" fill="url(#r)" stroke="#fff" stroke-width="5"/>
+  <path d="M6 16c0-5 5-10 10-10h108c5 0 10 5 10 10v30L70 82 6 46z" fill="#c21e24"/>
+  <path d="M6 46l64 36 64-36" fill="none" stroke="url(#g)" stroke-width="3"/>
+  <circle cx="70" cy="82" r="18" fill="url(#g)"/><text x="70" y="89" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="19" fill="#9a1018">福</text>
+  <text x="70" y="142" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="17" fill="url(#g)">Chúc mừng</text>
+  <text x="70" y="164" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="17" fill="url(#g)">năm mới</text>
+  <path d="M20 182h100" stroke="url(#g)" stroke-width="2" stroke-dasharray="2 4"/>
+</svg>

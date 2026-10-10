@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><radialGradient id="lens" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".5" stop-color="#cfe9ff" stop-opacity=".18"/><stop offset="1" stop-color="#7fb2d9" stop-opacity=".3"/></radialGradient>
+  <linearGradient id="rim" x1="0" x2="1"><stop offset="0" stop-color="#5b5f66"/><stop offset=".5" stop-color="#e9edf2"/><stop offset="1" stop-color="#4a4e55"/></linearGradient></defs>
+  <path d="M118 118l58 58" stroke="#fff" stroke-width="30" stroke-linecap="round"/>
+  <path d="M118 118l58 58" stroke="#2a0d10" stroke-width="20" stroke-linecap="round"/>
+  <path d="M128 128l12 12" stroke="url(#rim)" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="80" cy="80" r="62" fill="url(#lens)" stroke="#fff" stroke-width="20"/>
+  <circle cx="80" cy="80" r="62" fill="none" stroke="url(#rim)" stroke-width="12"/>
+  <path d="M46 62a40 40 0 0 1 30-26" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity=".9"/>
+</svg>

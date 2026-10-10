@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <defs>
+    <linearGradient id="beer" x1="0" x2="1">
+      <stop offset="0" stop-color="#c77a12"/><stop offset=".35" stop-color="#f0b53c"/><stop offset=".6" stop-color="#f7c95a"/><stop offset="1" stop-color="#b8690c"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".18" stop-color="#fff" stop-opacity=".08"/><stop offset=".8" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity=".4"/>
+    </linearGradient>
+    <radialGradient id="foam" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#fffef6"/><stop offset="1" stop-color="#efe3c4"/></radialGradient>
+  </defs>
+  <path d="M146 78h18c18 0 28 12 28 34v26c0 24-12 36-30 36h-16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="16" stroke-linecap="round"/>
+  <path d="M146 78h18c18 0 28 12 28 34v26c0 24-12 36-30 36h-16" fill="none" stroke="#e8d9b4" stroke-opacity=".5" stroke-width="6"/>
+  <rect x="22" y="56" width="128" height="172" rx="16" fill="url(#beer)"/>
+  <g fill="#fff" opacity=".55"><circle cx="52" cy="200" r="3"/><circle cx="64" cy="170" r="2.2"/><circle cx="96" cy="190" r="2.6"/><circle cx="118" cy="150" r="2"/><circle cx="80" cy="130" r="2.4"/><circle cx="110" cy="210" r="3"/><circle cx="44" cy="120" r="1.8"/></g>
+  <path d="M36 70v140M58 70v140M80 70v140M102 70v140M124 70v140" stroke="#fff" stroke-opacity=".12" stroke-width="6"/>
+  <rect x="22" y="56" width="128" height="172" rx="16" fill="url(#glass)" stroke="#fff" stroke-opacity=".75" stroke-width="5"/>
+  <path d="M14 66c-6-22 12-40 30-34 4-18 30-26 44-12 12-14 40-10 46 8 22-4 36 18 26 36-4 10-14 12-20 10H30c-8 0-14-3-16-8z" fill="url(#foam)" stroke="#fff" stroke-width="4"/>
+  <path d="M140 74c6 14 2 30-6 34-6 3-10-4-8-12 2-8 8-14 14-22z" fill="url(#foam)"/>
+  <rect x="34" y="84" width="10" height="120" rx="5" fill="#fff" opacity=".35"/>
+</svg>

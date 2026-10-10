@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 400">
+  <defs>
+    <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#3d1d06"/><stop offset=".22" stop-color="#8a4a12"/><stop offset=".42" stop-color="#c47a26"/><stop offset=".6" stop-color="#8a4a12"/><stop offset="1" stop-color="#2a1404"/></linearGradient>
+    <linearGradient id="foil" x1="0" x2="1"><stop offset="0" stop-color="#8a6416"/><stop offset=".45" stop-color="#ffe7a0"/><stop offset=".7" stop-color="#d4a237"/><stop offset="1" stop-color="#6b4a0c"/></linearGradient>
+    <linearGradient id="lab" x1="0" x2="1"><stop offset="0" stop-color="#d9c79b"/><stop offset=".4" stop-color="#fbf3dc"/><stop offset="1" stop-color="#cdb98a"/></linearGradient>
+  </defs>
+  <path d="M48 8h24v18c0 26 4 52 16 74 10 18 16 36 16 60v214c0 10-6 16-16 16H32c-10 0-16-6-16-16V160c0-24 6-42 16-60 12-22 16-48 16-74z" fill="url(#gl)"/>
+  <path d="M46 4h28v60c0 8-6 12-14 12s-14-4-14-12z" fill="url(#foil)"/>
+  <rect x="44" y="2" width="32" height="10" rx="3" fill="#b8892a"/>
+  <path d="M40 60h40l2 10H38z" fill="#7a1e1e"/>
+  <rect x="16" y="196" width="88" height="118" fill="url(#lab)"/>
+  <rect x="16" y="196" width="88" height="10" fill="#9b1c1c"/><rect x="16" y="304" width="88" height="10" fill="#9b1c1c"/>
+  <text x="60" y="238" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="17" fill="#9b1c1c">BIA</text>
+  <text x="60" y="260" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15" fill="#9b1c1c">HÀ NỘI</text>
+  <path d="M34 270h52" stroke="#b8892a" stroke-width="1.5"/>
+  <text x="60" y="288" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="11" fill="#5a3a12">Tết 2025</text>
+  <path d="M28 120c-4 40-4 220 0 270" stroke="#fff" stroke-opacity=".35" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M90 130c3 50 3 200 0 250" stroke="#fff" stroke-opacity=".12" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <g fill="#fff" opacity=".5"><circle cx="40" cy="340" r="2"/><circle cx="76" cy="352" r="1.6"/><circle cx="58" cy="330" r="1.4"/><circle cx="84" cy="180" r="1.8"/><circle cx="36" cy="170" r="1.4"/></g>
+</svg>
