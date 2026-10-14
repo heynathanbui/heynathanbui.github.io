@@ -235,5 +235,16 @@
     });
   }
 
+  // Safety net: anything on screen that is still hidden after a moment gets revealed.
+  const rescue = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => {
+      if (Number(getComputedStyle(e.target).opacity) < 0.05) {
+        gsap.to(e.target, { x: 0, y: 0, opacity: 1, scale: 1, rotate: Number(e.target.dataset.rot || 0), duration: .7, ease: 'power2.out', overwrite: true });
+      }
+    }, 1200);
+  }), { threshold: 0.05 });
+  document.querySelectorAll('[data-anim]').forEach((el) => rescue.observe(el));
+
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
