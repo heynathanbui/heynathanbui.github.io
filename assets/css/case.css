@@ -1111,3 +1111,16 @@ em.u::after { content: ""; position: absolute; left: -2%; right: -2%; bottom: -.
   .stack { grid-template-columns: 1fr; gap: 26px; }
   .stack__n + .stack__n::before { content: "↓"; left: 50%; top: -21px; transform: translateX(-50%); }
 }
+
+
+/* The 30-second version: problem, role, outcome for a recruiter's first pass */
+.tldr { background: var(--paper); padding: clamp(36px, 5vw, 64px) 0; position: relative; z-index: 2; }
+.tldr__card { background: var(--paper-2); border: 1px solid color-mix(in srgb, var(--bg) 14%, transparent); border-radius: 22px; padding: clamp(22px, 3vw, 38px); box-shadow: 0 24px 50px -36px rgba(0, 0, 0, .45); }
+.tldr__k { margin: 0 0 18px; font: 600 11px/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--bg); }
+.tldr__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 3vw, 40px); }
+.tldr__grid > div { border-top: 2px solid var(--accent); padding-top: 14px; }
+.tldr__grid small { display: block; font: 600 10px/1.4 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.tldr__grid p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink); }
+.tldr__grid b { font-weight: 700; color: var(--bg); }
+.case--finder .tldr__grid b { color: var(--bg); }
+@media (max-width: 800px) { .tldr__grid { grid-template-columns: 1fr; } }
