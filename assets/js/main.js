@@ -114,6 +114,46 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
   const onScroll = () => { const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
+  // Case-study variants of the progress bar: a plane flying along it (Vietnam Airlines),
+  // a waveform that fills as you read (Beer Hanoi).
+  const body = document.body;
+  if (body.classList.contains('case--vna')) {
+    const plane = document.createElement('div');
+    plane.className = 'progress-plane';
+    plane.setAttribute('aria-hidden', 'true');
+    plane.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" transform="rotate(90 12 12)"/></svg>';
+    body.appendChild(plane);
+    const fly = () => { const h = document.documentElement.scrollHeight - innerHeight; const p = h > 0 ? scrollY / h : 0; plane.style.transform = `translateX(${p * (innerWidth - 22)}px)`; };
+    addEventListener('scroll', fly, { passive: true }); addEventListener('resize', fly); fly();
+  }
+  if (body.classList.contains('case--beer')) {
+    const wave = document.createElement('div');
+    wave.className = 'progress-wave';
+    wave.setAttribute('aria-hidden', 'true');
+    const n = Math.round(innerWidth / 7);
+    for (let i = 0; i < n; i++) {
+      const b = document.createElement('i');
+      b.style.height = `${4 + Math.abs(Math.sin(i * 0.37) * Math.cos(i * 0.11)) * 10}px`;
+      wave.appendChild(b);
+    }
+    body.appendChild(wave);
+    const bars = [...wave.children];
+    const fill = () => { const h = document.documentElement.scrollHeight - innerHeight; const k = Math.round((h > 0 ? scrollY / h : 0) * bars.length); bars.forEach((b, i) => b.classList.toggle('on', i < k)); };
+    addEventListener('scroll', fill, { passive: true }); fill();
+  }
+
+  // Projects page: the section takes on each client's colours while that chapter is centred on screen.
+  document.querySelectorAll('.brand-scroll').forEach((sec) => {
+    const items = [...sec.querySelectorAll('[data-brand]')];
+    const pick = () => {
+      const mid = innerHeight / 2;
+      const hit = items.find((el) => { const r = el.getBoundingClientRect(); return r.top - 120 < mid && r.bottom + 120 > mid; });
+      if (hit) { sec.dataset.active = hit.dataset.brand; sec.classList.add('is-brand'); }
+      else sec.classList.remove('is-brand');
+    };
+    addEventListener('scroll', pick, { passive: true }); pick();
+  });
+
   // Word reveal for headings marked .split-css
   document.querySelectorAll('.split-css').forEach((el) => {
     let i = 0;
