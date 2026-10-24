@@ -59,6 +59,7 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
 // Year in footer
+const VI = document.documentElement.lang === 'vi';
 document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
 // YouTube facade: load the player only when someone clicks play.
@@ -175,7 +176,7 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
 
   // Copy email
   document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copied'; b.classList.add('is-done'); setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('is-done'); }, 1800); } catch (e) {}
+    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = VI ? 'Đã chép' : 'Copied'; b.classList.add('is-done'); setTimeout(() => { b.textContent = VI ? 'Sao chép' : 'Copy'; b.classList.remove('is-done'); }, 1800); } catch (e) {}
   }));
 
   // Custom cursor + magnetic buttons (mouse only)
