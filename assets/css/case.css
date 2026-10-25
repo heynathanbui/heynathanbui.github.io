@@ -1124,3 +1124,6 @@ em.u::after { content: ""; position: absolute; left: -2%; right: -2%; bottom: -.
 .tldr__grid b { font-weight: 700; color: var(--bg); }
 .case--finder .tldr__grid b { color: var(--bg); }
 @media (max-width: 800px) { .tldr__grid { grid-template-columns: 1fr; } }
+
+/* Outcome-first headlines are longer than the old taglines, so cap their size */
+.c-hero h1 { font-size: clamp(44px, 5.4vw, 86px); line-height: 1.02; }
