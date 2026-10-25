@@ -80,19 +80,47 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
   const store = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
 
   // Intro curtain on first visit this session, then reused for page transitions.
+  // Each case study gets its own curtain, picked from the destination URL and carried
+  // across the page load in sessionStorage so the arrival matches the departure.
+  const VI_LANG = document.documentElement.lang === 'vi';
+  const svg = {
+    plane: '<svg class="ct-plane" viewBox="0 0 120 40" aria-hidden="true"><path d="M10 16 4 4h7l11 12z"/><path d="M5 22q0-6 9-6h81q17 0 22 5-5 4-22 4H14q-9 0-9-3z"/><path d="m50 22 22 14h8L66 22z"/><ellipse cx="68" cy="29" rx="6" ry="3"/></svg>',
+    bottle: '<svg class="ct-bottle" viewBox="0 0 40 120" aria-hidden="true"><rect class="cap" x="15" y="1" width="10" height="5" rx="1.5"/><path class="glass" d="M16 6h8v24q8 10 8 22v60q0 4-4 4H12q-4 0-4-4V52q0-12 8-22z"/><rect class="label" x="8" y="62" width="24" height="26"/><path class="trim" d="M8 65h24M8 85h24"/><path class="shine" d="M12 54v54"/></svg>',
+    chart: '<svg class="ct-chart" viewBox="0 0 220 120" aria-hidden="true">' +
+      [[14, 70, 22, 50], [38, 60, 18, 40], [62, 64, 26, 44], [86, 48, 22, 30], [110, 52, 30, 34], [134, 36, 24, 20], [158, 30, 30, 14], [182, 18, 26, 6]]
+        .map(([x, y, h, w], i) => `<g class="cdl" style="--i:${i}"><path d="M${x + 6} ${w} V${y + h + 12}"/><rect x="${x}" y="${y}" width="12" height="${h}" rx="2"/></g>`).join('') +
+      '<path class="line" d="M6 98 C40 92 52 70 78 74 S120 50 140 46 186 22 214 10"/></svg>',
+    opera: '<svg class="ct-opera" viewBox="0 0 240 116" aria-hidden="true"><path d="M20 95Q40 40 75 30Q62 60 60 95z"/><path d="M55 95Q75 35 115 22Q100 58 98 95z"/><path d="M95 95Q118 30 160 18Q146 58 142 95z"/><path d="M150 95Q165 55 195 48Q186 72 185 95z"/><path d="M180 95Q192 66 215 62Q208 80 208 95z"/><path d="M8 95h226v7H8z"/><path class="water" d="M0 110q30-5 60 0t60 0 60 0 60 0"/></svg>',
+  };
+  const THEMES = {
+    vna: { art: '<div class="ct-route"></div>' + svg.plane, k: VI_LANG ? 'Chương 1 · Mời lên máy bay' : 'Chapter 1 · Now boarding', t: 'Vietnam Airlines' },
+    beer: { art: '<div class="ct-clink">' + svg.bottle + svg.bottle + '</div><div class="ct-bubbles">' + '<i></i>'.repeat(12) + '</div>', k: VI_LANG ? 'Chương 2 · Zee Agency' : 'Chapter 2 · Zee Agency', t: 'Bia Hà Nội' },
+    finder: { art: svg.chart + '<div class="ct-ticker"><span>BTC ▲</span><span>ETH ▲</span><span>SOL ▲</span><span>XRP ▲</span><span>BTC ▲</span><span>ETH ▲</span></div>', k: VI_LANG ? 'Chương 3 · Fintech' : 'Chapter 3 · Fintech', t: 'Finder' },
+    uavs: { art: svg.opera + '<div class="ct-stars">' + '<i></i>'.repeat(9) + '</div>', k: VI_LANG ? 'Chương 4 · Cộng đồng' : 'Chapter 4 · Community', t: 'UAVS NSW' },
+  };
+  const themeFor = (path) => (/vietnam-airlines/.test(path) ? 'vna' : /beer-hanoi/.test(path) ? 'beer' : /\/finder\.html/.test(path) ? 'finder' : /\/uavs\.html/.test(path) ? 'uavs' : '');
   const curtain = document.createElement('div');
-  curtain.className = 'curtain';
   curtain.setAttribute('aria-hidden', 'true');
-  curtain.innerHTML = '<div class="curtain__inner"><div class="curtain__bars">' + '<i></i>'.repeat(14) + '</div><div class="curtain__hi">Xin chào</div><div class="curtain__name">Nathan · Thành Nhật Bùi</div></div>';
-  document.body.appendChild(curtain);
+  const defaultInner = '<div class="curtain__inner"><div class="curtain__bars">' + '<i></i>'.repeat(14) + '</div><div class="curtain__hi">Xin chào</div><div class="curtain__name">Nathan · Thành Nhật Bùi</div></div>';
+  const dress = (theme, label) => {
+    curtain.className = 'curtain' + (theme ? ' curtain--' + theme : '');
+    const th = THEMES[theme];
+    curtain.innerHTML = th
+      ? `<div class="curtain__inner ct"><div class="ct-art">${th.art}</div><p class="ct-k">${th.k}</p><p class="ct-t">${th.t}</p></div>`
+      : defaultInner;
+    if (!th && label) curtain.querySelector('.curtain__hi').textContent = label;
+  };
   const firstVisit = !store.get('nb-intro');
   const cameFromTransition = store.get('nb-transition') === '1';
+  const arrivingTheme = cameFromTransition ? (store.get('nb-theme') || '') : '';
+  dress(arrivingTheme);
+  document.body.appendChild(curtain);
   if (!reduce && (firstVisit || cameFromTransition)) {
     curtain.style.transition = 'none'; curtain.classList.add('is-on'); void curtain.offsetWidth; curtain.style.transition = '';
-    const hold = firstVisit ? 1300 : 250;
+    const hold = firstVisit ? 1300 : arrivingTheme ? 650 : 250;
     window.addEventListener('load', () => setTimeout(() => { curtain.classList.remove('is-on'); curtain.classList.add('is-off'); }, hold));
   }
-  store.set('nb-intro', '1'); store.set('nb-transition', '0');
+  store.set('nb-intro', '1'); store.set('nb-transition', '0'); store.set('nb-theme', '');
 
   if (!reduce) {
     document.addEventListener('click', (e) => {
@@ -101,11 +129,12 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
       const url = new URL(a.href, location.href);
       if (url.origin !== location.origin || url.protocol.startsWith('mailto') || (url.pathname === location.pathname && url.hash)) return;
       e.preventDefault();
-      store.set('nb-transition', '1');
-      curtain.querySelector('.curtain__hi').textContent = a.textContent.trim().slice(0, 28) || 'Xin chào';
-      curtain.classList.remove('is-off'); curtain.style.transition = 'none'; curtain.style.transform = 'translateY(-100%)'; void curtain.offsetWidth;
+      const theme = themeFor(url.pathname);
+      store.set('nb-transition', '1'); store.set('nb-theme', theme);
+      dress(theme, a.textContent.trim().slice(0, 28) || 'Xin chào');
+      curtain.style.transition = 'none'; curtain.style.transform = 'translateY(-100%)'; void curtain.offsetWidth;
       curtain.style.transition = ''; curtain.style.transform = ''; curtain.classList.add('is-on');
-      setTimeout(() => { location.href = url.href; }, 650);
+      setTimeout(() => { location.href = url.href; }, theme ? 1000 : 650);
     });
     window.addEventListener('pageshow', (e) => { if (e.persisted) { curtain.classList.remove('is-on'); curtain.classList.add('is-off'); } });
   }
