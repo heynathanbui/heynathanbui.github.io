@@ -18,11 +18,12 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Figtree:ital,wght@0,600;0,700;1,800&amp;family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&amp;display=swap" rel="stylesheet"/>
-<link href="../assets/css/style.css?v=20261025c" rel="stylesheet"/>
+<link href="../assets/css/style.css?v=20261124i" rel="stylesheet"/>
 <link href="https://heynathanbui.github.io/index.html" hreflang="en" rel="alternate"/>
 <link href="https://heynathanbui.github.io/vi/index.html" hreflang="vi" rel="alternate"/>
 </head>
 <body>
+<a class="skip" href="#main">Chuyển đến nội dung</a>
 <nav aria-label="Điều hướng chính" class="nav">
 <div class="nav__pill">
 <a class="nav__brand" href="index.html">
@@ -42,6 +43,7 @@
 <span aria-label="Ngôn ngữ" class="nav__lang" role="group"><a href="../index.html" hreflang="en" lang="en">EN</a><a aria-current="true" lang="vi">VI</a></span>
 </div>
 </nav>
+<main id="main">
 <!-- HERO -->
 <header class="hero">
 <div aria-hidden="true" class="drum"></div>
@@ -49,7 +51,7 @@
 <div>
 <p class="eyebrow reveal">Truyền thông marketing  ·  Sydney</p>
 <h1 class="display split-css">Nội dung khiến người xem dừng lại. <em>Con số chứng minh điều đó.</em></h1>
-<p class="hero__lede reveal" data-delay="2">Tôi làm marketing cho khán giả Việt Nam và châu Á – Thái Bình Dương, rồi đo xem nó có hiệu quả không. <strong>+20% lượt tiếp cận</strong> cho Vietnam Airlines trong hai tháng. Phần lồng tiếng và âm thanh của chiến dịch Tết Bia Hà Nội đạt <strong>4M+ lượt xem</strong>. Shorts và nội dung nhà sáng lập cho <strong>Finder</strong> tại Sydney.</p>
+<p class="hero__lede reveal" data-delay="2">Tôi làm marketing cho khán giả Việt Nam và châu Á – Thái Bình Dương, rồi đo xem nó có hiệu quả không. Instagram cho <strong>Vietnam Airlines</strong>, âm thanh cho <strong>Bia Hà Nội</strong>, video cho <strong>Finder</strong>.</p>
 <div class="hero__actions reveal" data-delay="3"><a class="btn btn--gold" href="projects.html">Xem dự án <span class="arrow">→</span></a> <a class="btn btn--ghost" href="about.html">Về Nhật</a></div>
 <div aria-label="Các thương hiệu tôi đã hợp tác" class="hero__logos reveal" data-delay="3">
 <span class="hero__logos-k">Đã hợp tác</span>
@@ -110,49 +112,64 @@
 <p class="eyebrow reveal">Dự án tiêu biểu</p>
 <h2 class="display h2 reveal" data-delay="1">Bốn đề bài.<br/><em>Bốn kết quả.</em></h2>
 </div>
-<p class="section__note reveal" data-delay="2">Một hãng hàng không, một thương hiệu bia lâu đời, một công ty fintech và một cộng đồng sinh viên. Mỗi dự án mở đầu bằng kết quả, rồi cho thấy tôi đã làm thế nào.</p>
 </div>
-<div class="cases">
-<a class="case-card case-card--vna reveal" data-cursor="Xem" href="work/vietnam-airlines.html">
-<div class="case-card__img"><img alt="Tổ bay Vietnam Airlines đi bộ cạnh máy bay" loading="lazy" src="../assets/img/vna-crew-tarmac.jpg"/></div>
-<div class="case-card__body">
-<span class="case-card__k">Ch. 1 · Chiến lược Instagram</span>
-<h3>Vietnam Airlines</h3>
-<p>Dậm chân ở 210K người theo dõi. Tôi mở thêm một hướng ưu tiên Reels cho Gen Z mà không đánh mất nhóm cốt lõi 35–45: +20% lượt tiếp cận trong hai tháng.</p>
-<div class="case-card__stat"><span>+20% lượt tiếp cận</span><span>210K → 212K</span></div>
-</div>
+<div aria-label="Các dự án tiêu biểu" aria-roledescription="carousel" class="reel reveal" role="region">
+<div class="reel__stage">
+<div class="reel__ring"><div class="reel__orbit">
+<a aria-label="Vietnam Airlines" class="reel__item reel__item--vna" data-cursor="Xem" data-i="0" href="work/vietnam-airlines.html">
+<div class="reel__img"><img alt="Tổ bay Vietnam Airlines đi bộ cạnh máy bay" height="1200" loading="lazy" src="../assets/img/vna-crew-tarmac.jpg" width="900"/></div>
 </a>
-<a class="case-card case-card--beer reveal" data-cursor="Xem" data-delay="1" href="work/beer-hanoi.html">
-<div class="case-card__img"><img alt="Một gia đình nâng ly trong bữa cơm Tết, cảnh trong TVC Bia Hà Nội" loading="lazy" src="../assets/img/beer-dinner.jpg"/></div>
-<div class="case-card__body">
+<a aria-label="Bia Hà Nội · Tết 2025" class="reel__item reel__item--beer" data-cursor="Xem" data-i="1" href="work/beer-hanoi.html">
+<div class="reel__img"><img alt="Một gia đình nâng ly trong bữa cơm Tết, cảnh trong TVC Bia Hà Nội" height="1200" loading="lazy" src="../assets/img/beer-dinner.jpg" width="900"/></div>
+</a>
+<a aria-label="Finder" class="reel__item reel__item--finder" data-cursor="Xem" data-i="2" href="work/finder.html">
+<div class="reel__img"><div class="fc reel__fc"><div class="fc__top"><span class="fc__logo">finder</span><span class="fc__pill">Thực tập</span></div><p class="fc__h" style="color:#fff">Nội dung tài chính, <em>đáng để dừng lướt.</em></p><div class="fc__rows"><div class="fc__row best"><i>₿</i><span>Crypto Finder</span><b>Lựa chọn hàng đầu</b></div><div class="fc__row"><i>▶</i><span>Video · SEO</span></div></div></div></div>
+</a>
+<a aria-label="UAVS NSW" class="reel__item reel__item--uavs" data-cursor="Xem" data-i="3" href="work/uavs.html">
+<div class="reel__img"><img alt="Mọi người tại UAVS Sports Day chụp ảnh trên sân bóng rổ" height="1200" loading="lazy" src="../assets/img/community-sportday.jpg" width="900"/></div>
+</a>
+</div></div>
+<div class="reel__bar">
+<p aria-live="polite" class="reel__name"><span class="reel__logo reel__logo--vna"><img alt="" height="26" src="../assets/img/logos/brands/vietnam-airlines.svg" width="150"/></span><span class="sr-only">Vietnam Airlines</span></p>
+<div class="reel__progress"><i></i><i></i><i></i><i></i></div>
+<span aria-hidden="true" class="reel__count"><b>01</b> / 04</span>
+<span aria-hidden="true" class="reel__hint"><svg viewbox="0 0 32 16"><path d="M7 3L2 8l5 5M25 3l5 5-5 5M2 8h28"></path></svg>Kéo hoặc vuốt</span>
+</div>
+</div>
+<div class="reel__panel">
+<article class="reel__info case-card--vna" data-i="0">
+<span class="case-card__k">Ch. 1 · Chiến lược Instagram</span>
+<span aria-hidden="true" class="case-card__big">+20%<small>lượt tiếp cận trong hai tháng</small></span>
+<h3>Vietnam Airlines</h3>
+<p>Dậm chân ở 210K người theo dõi. Tôi mở thêm một hướng ưu tiên Reels cho Gen Z mà không đánh mất nhóm cốt lõi 35–45.</p>
+<div class="case-card__stat"><span>+2K người theo dõi</span><span>2–4% tương tác</span></div>
+<a class="btn btn--gold reel__go" href="work/vietnam-airlines.html">Xem dự án <span class="arrow">→</span></a>
+</article>
+<article class="reel__info case-card--beer" data-i="1" hidden="">
 <span class="case-card__k">Ch. 2 · Thiết kế âm thanh</span>
+<span aria-hidden="true" class="case-card__big">4M+<small>tổng lượt xem</small></span>
 <h3>Bia Hà Nội · Tết 2025</h3>
 <p>Phần lồng tiếng và hiệu ứng âm thanh của tôi khiến bộ phim đoàn viên ngày Tết nghe như ở nhà, trong một chiến dịch đạt 4M+ tổng lượt xem.</p>
 <div class="case-card__stat"><span>4M+ lượt xem</span><span>3 phim</span></div>
-</div>
-</a>
-<a class="case-card case-card--finder reveal" data-cursor="Xem" data-delay="2" href="work/finder.html">
-<div class="case-card__img"><div class="fc" style="aspect-ratio:4/3; border-radius:0">
-<div class="fc__top"><span class="fc__logo">finder</span><span class="fc__pill">Thực tập</span></div>
-<p class="fc__h" style="color:#fff">Nội dung tài chính, <em>đáng để dừng lướt.</em></p>
-<div class="fc__rows"><div class="fc__row best"><i>₿</i><span>Crypto Finder</span><b>Lựa chọn hàng đầu</b></div><div class="fc__row"><i>▶</i><span>Video · SEO</span></div></div>
-</div></div>
-<div class="case-card__body">
+<a class="btn btn--gold reel__go" href="work/beer-hanoi.html">Xem dự án <span class="arrow">→</span></a>
+</article>
+<article class="reel__info case-card--finder" data-i="2" hidden="">
 <span class="case-card__k">Ch. 3 · Mạng xã hội &amp; video</span>
+<span aria-hidden="true" class="case-card__big">+5%<small>lượt tiếp cận trong một tháng</small></span>
 <h3>Finder</h3>
 <p>Meme, Shorts và nội dung nhà sáng lập cho khán giả crypto: khoảng 10 Shorts và 3 video dài trong hai tuần, +5% lượt tiếp cận trong một tháng.</p>
 <div class="case-card__stat"><span>+5% lượt tiếp cận</span><span>4–5K lượt xem</span></div>
-</div>
-</a>
-<a class="case-card case-card--uavs reveal" data-cursor="Xem" data-delay="3" href="work/uavs.html">
-<div class="case-card__img"><img alt="Mọi người tại UAVS Sports Day chụp ảnh trên sân bóng rổ" loading="lazy" src="../assets/img/community-sportday.jpg"/></div>
-<div class="case-card__body">
+<a class="btn btn--gold reel__go" href="work/finder.html">Xem dự án <span class="arrow">→</span></a>
+</article>
+<article class="reel__info case-card--uavs" data-i="3" hidden="">
 <span class="case-card__k">Ch. 4 · Cộng đồng</span>
+<span aria-hidden="true" class="case-card__big">4<small>sự kiện</small></span>
 <h3>UAVS NSW</h3>
 <p>Bốn sự kiện, bốn bộ nhận diện, và hình ảnh được thiết kế để mỗi bức ảnh được chia sẻ đều mang theo nhà tài trợ.</p>
 <div class="case-card__stat"><span>4 sự kiện</span><span>Trưởng ban truyền thông</span></div>
+<a class="btn btn--gold reel__go" href="work/uavs.html">Xem dự án <span class="arrow">→</span></a>
+</article>
 </div>
-</a>
 </div>
 </div>
 </section>
@@ -165,42 +182,45 @@
 <h2 class="display h2 reveal" data-delay="1">Khách hàng &amp; <em>Đối tác</em></h2>
 <hr class="rule reveal" data-delay="2"/>
 </div>
-<p class="section__note reveal" data-delay="2">Từ tập đoàn hàng tiêu dùng toàn cầu, hãng hàng không quốc gia đến các agency sáng tạo. Di chuột qua từng thương hiệu.</p>
+<p class="section__note reveal" data-delay="2">Từ tập đoàn hàng tiêu dùng toàn cầu, hãng hàng không quốc gia đến các agency sáng tạo.</p>
 </div>
 <div class="brands">
-<article class="brand brand--tbwa reveal" data-cursor="TBWA\">
+<article class="brand brand--vna brand--big" data-cursor="VNA">
+<svg aria-hidden="true" class="lotus" viewbox="0 0 120 80"><g fill="none" stroke="#c9a227" stroke-linecap="round" stroke-width="3"><path d="M60 74C48 62 48 38 60 10c12 28 12 52 0 64z"></path><path d="M60 74C42 70 30 56 28 34c14 6 26 20 32 40z"></path><path d="M60 74c18-4 30-18 32-40-14 6-26 20-32 40z"></path><path d="M60 74C38 76 20 66 10 50c18-2 36 8 50 24z"></path><path d="M60 74c22 2 40-8 50-24-18-2-36 8-50 24z"></path></g></svg>
+<img alt="" aria-hidden="true" class="brand__plane" height="259" src="../assets/img/vna-plane-cutout.png" width="858"/>
+<div class="brand__logo"><img alt="Vietnam Airlines" src="../assets/img/logos/brands/vietnam-airlines.svg"/></div>
+<p class="brand__k">Khách hàng · Chiến lược Instagram</p><p class="brand__t">Bông sen vàng</p>
+<a class="brand__go" href="work/vietnam-airlines.html">Xem dự án <span class="arrow">→</span></a>
+</article>
+<article class="brand brand--bia brand--big" data-cursor="Dô!">
+<span aria-hidden="true" class="bubbles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+<span aria-hidden="true" class="foam"></span>
+<img alt="" aria-hidden="true" class="brand__bottle" height="875" src="../assets/img/beer/bottle-bia-ha-noi.png" width="256"/>
+<div class="brand__logo"><img alt="HABECO, nhà sản xuất Bia Hà Nội" src="../assets/img/logos/brands/habeco.png"/></div>
+<p class="brand__k">Khách hàng · Bia Hà Nội</p><p class="brand__t">Về nhà</p>
+<a class="brand__go" href="work/beer-hanoi.html">Xem dự án <span class="arrow">→</span></a>
+</article>
+<article class="brand brand--tbwa" data-cursor="TBWA\">
 <span aria-hidden="true" class="brand__slash"></span>
 <div class="brand__logo"><img alt="" src="../assets/img/logos/brands/tbwa.svg"/><b>TBWA</b></div>
 <p class="brand__k">Agency</p><p class="brand__t">Disruption<sup>®</sup></p>
 <span class="sr-only">TBWA</span>
 </article>
-<article class="brand brand--omo reveal" data-cursor="OMO" data-delay="1">
+<article class="brand brand--omo" data-cursor="OMO">
 <span aria-hidden="true" class="bubbles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
 <div class="brand__logo"><img alt="OMO" src="../assets/img/logos/brands/omo.png"/></div>
 <div class="brand__sub"><img alt="Unilever" src="../assets/img/logos/brands/unilever.svg"/></div>
 <p class="brand__k">Unilever · Giặt tẩy</p><p class="brand__t">Dirt is Good</p>
 </article>
-<article class="brand brand--vaseline reveal" data-cursor="Vaseline" data-delay="2">
-<span aria-hidden="true" class="drop"></span>
-<div class="brand__logo"><img alt="Vaseline" src="../assets/img/logos/brands/vaseline.svg"/></div>
-<p class="brand__k">Unilever · Chăm sóc da</p><p class="brand__t">Chiếc hũ xanh</p>
-</article>
-<article class="brand brand--vna reveal" data-cursor="VNA">
-<svg aria-hidden="true" class="lotus" viewbox="0 0 120 80"><g fill="none" stroke="#c9a227" stroke-linecap="round" stroke-width="3"><path d="M60 74C48 62 48 38 60 10c12 28 12 52 0 64z"></path><path d="M60 74C42 70 30 56 28 34c14 6 26 20 32 40z"></path><path d="M60 74c18-4 30-18 32-40-14 6-26 20-32 40z"></path><path d="M60 74C38 76 20 66 10 50c18-2 36 8 50 24z"></path><path d="M60 74c22 2 40-8 50-24-18-2-36 8-50 24z"></path></g></svg>
-<img alt="" aria-hidden="true" class="brand__plane" src="../assets/img/vna-plane-cutout.png"/>
-<div class="brand__logo"><img alt="Vietnam Airlines" src="../assets/img/logos/brands/vietnam-airlines.svg"/></div>
-<p class="brand__k">Khách hàng · Instagram</p><p class="brand__t">Bông sen vàng</p>
-</article>
-<article class="brand brand--zee reveal" data-cursor="ZEE" data-delay="1">
+<article class="brand brand--zee" data-cursor="ZEE">
 <svg aria-hidden="true" class="zz" preserveaspectratio="none" viewbox="0 0 300 60"><path d="M0 50 L40 10 L80 50 L120 10 L160 50 L200 10 L240 50 L280 10 L320 50"></path></svg>
 <div class="brand__logo"><img alt="ZEE Agency" src="../assets/img/logos/brands/zee.svg"/></div>
 <p class="brand__k">Agency · Hà Nội</p><p class="brand__t">Lifestyle-Focused™</p>
 </article>
-<article class="brand brand--bia reveal" data-cursor="Dô!" data-delay="2">
-<span aria-hidden="true" class="bubbles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-<span aria-hidden="true" class="foam"></span>
-<div class="brand__logo"><img alt="HABECO, nhà sản xuất Bia Hà Nội" src="../assets/img/logos/brands/habeco.png"/></div>
-<p class="brand__k">Khách hàng · Bia Hà Nội</p><p class="brand__t">Từ năm 1890</p>
+<article class="brand brand--vaseline" data-cursor="Vaseline">
+<span aria-hidden="true" class="drop"></span>
+<div class="brand__logo"><img alt="Vaseline" src="../assets/img/logos/brands/vaseline.svg"/></div>
+<p class="brand__k">Unilever · Chăm sóc da</p><p class="brand__t">Chiếc hũ xanh</p>
 </article>
 </div>
 </div>
@@ -211,7 +231,7 @@
 <div class="wrap contact__grid">
 <div>
 <p class="eyebrow reveal">Làm việc cùng tôi</p>
-<h2 class="display reveal" data-delay="1">Cùng <em>bắt đầu nhé.</em></h2>
+<h2 class="display reveal" data-delay="1">Đang tuyển ở Sydney hay Việt Nam? <em>Cùng trò chuyện nhé.</em></h2>
 </div>
 <ul class="contact__list reveal" data-delay="2">
 <li><span>Email</span><span class="contact__val"><a href="mailto:buithanhnhatstudent3@gmail.com">buithanhnhatstudent3@gmail.com</a><button aria-label="Sao chép địa chỉ email" class="copy" data-copy="buithanhnhatstudent3@gmail.com">Sao chép</button></span></li>
@@ -222,9 +242,10 @@
 </ul>
 </div>
 </section>
+</main>
 <footer class="footer">
-<div class="wrap"><span>© <span data-year=""></span> Thanh (Nathan) Nhat Bui</span> <span>Truyền thông marketing · Sydney</span></div>
+<div class="wrap"><span>© <span data-year=""></span> Thanh (Nathan) Nhat Bui</span> <span>Truyền thông marketing · Sydney</span> <small class="footer__credit">Ảnh Nhà hát Opera Sydney của <a href="https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_-_Dec_2008.jpg" rel="noopener">Diliff</a>, do tôi tách nền, <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>. Logo thương hiệu thuộc về chủ sở hữu.</small></div>
 </footer>
-<script src="../assets/js/main.js?v=20261025a"></script>
+<script src="../assets/js/main.js?v=20261124i"></script>
 </body>
 </html>
