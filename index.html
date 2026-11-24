@@ -17,11 +17,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Be+Vietnam+Pro:wght@400;500;600&family=Figtree:ital,wght@0,600;0,700;1,800&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261025c">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261124i">
   <link rel="alternate" hreflang="en" href="https://heynathanbui.github.io/index.html">
   <link rel="alternate" hreflang="vi" href="https://heynathanbui.github.io/vi/index.html">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
   <nav class="nav" aria-label="Main">
     <div class="nav__pill">
@@ -42,6 +43,7 @@
       <span class="nav__lang" role="group" aria-label="Language"><a aria-current="true" lang="en">EN</a><a href="vi/index.html" lang="vi" hreflang="vi">VI</a></span>
     </div>
   </nav>
+  <main id="main">
 
   <!-- HERO -->
   <header class="hero">
@@ -50,12 +52,10 @@
       <div>
         <p class="eyebrow reveal">Marketing communications &nbsp;·&nbsp; Sydney</p>
         <h1 class="display split-css">Content people stop for. <em>Numbers that prove it.</em></h1>
-        <p class="hero__lede reveal" data-delay="2">
-          I make marketing for Vietnamese and APAC audiences, then measure whether it worked. <strong>+20% reach</strong> for Vietnam Airlines in two months. The voiceover and sound behind a <strong>4M+ view</strong> Bia Hà Nội Tết campaign. Shorts and founder content for <strong>Finder</strong> in Sydney.
-        </p>
+        <p class="hero__lede reveal" data-delay="2">I make marketing for Vietnamese and APAC audiences, then measure whether it worked. Instagram for <strong>Vietnam Airlines</strong>, sound for <strong>Bia Hà Nội</strong>, video for <strong>Finder</strong>.</p>
         <div class="hero__actions reveal" data-delay="3">
           <a class="btn btn--gold" href="projects.html">See the work <span class="arrow">→</span></a>
-          <a class="btn btn--ghost" href="about.html">Meet Nhat</a>
+          <a class="btn btn--ghost" href="about.html">Meet Nathan</a>
         </div>
         <div class="hero__logos reveal" data-delay="3" aria-label="Brands I have worked with">
           <span class="hero__logos-k">Worked with</span>
@@ -123,50 +123,65 @@
           <p class="eyebrow reveal">Selected work</p>
           <h2 class="display h2 reveal" data-delay="1">Four briefs.<br><em>Four results.</em></h2>
         </div>
-        <p class="section__note reveal" data-delay="2">An airline, a heritage beer, a fintech and a student community. Every case study opens with the result, then shows how I got there.</p>
       </div>
 
-      <div class="cases">
-        <a class="case-card case-card--vna reveal" href="work/vietnam-airlines.html" data-cursor="View">
-          <div class="case-card__img"><img src="assets/img/vna-crew-tarmac.jpg" alt="Vietnam Airlines crew walking beside an aircraft" loading="lazy"></div>
-          <div class="case-card__body">
-            <span class="case-card__k">Ch. 1 · Instagram strategy</span>
-            <h3>Vietnam Airlines</h3>
-            <p>Stalled at 210K followers. I added a Reels-first lane for Gen Z without losing the 35–45 core: +20% reach in two months.</p>
-            <div class="case-card__stat"><span>+20% reach</span><span>210K → 212K</span></div>
+      <div class="reel reveal" role="region" aria-roledescription="carousel" aria-label="Selected case studies">
+        <div class="reel__stage">
+          <div class="reel__ring"><div class="reel__orbit">
+          <a class="reel__item reel__item--vna" href="work/vietnam-airlines.html" data-i="0" data-cursor="View" aria-label="Vietnam Airlines">
+            <div class="reel__img"><img src="assets/img/vna-crew-tarmac.jpg" alt="Vietnam Airlines crew walking beside an aircraft" width="900" height="1200" loading="lazy"></div>
+          </a>
+          <a class="reel__item reel__item--beer" href="work/beer-hanoi.html" data-i="1" data-cursor="View" aria-label="Beer Hanoi · Tết 2025">
+            <div class="reel__img"><img src="assets/img/beer-dinner.jpg" alt="A family toasting at a Tết dinner, from the Beer Hanoi TVC" width="900" height="1200" loading="lazy"></div>
+          </a>
+          <a class="reel__item reel__item--finder" href="work/finder.html" data-i="2" data-cursor="View" aria-label="Finder">
+            <div class="reel__img"><div class="fc reel__fc"><div class="fc__top"><span class="fc__logo">finder</span><span class="fc__pill">Internship</span></div><p class="fc__h" style="color:#fff">Money content, made <em>scroll-worthy.</em></p><div class="fc__rows"><div class="fc__row best"><i>₿</i><span>Crypto Finder</span><b>Best pick</b></div><div class="fc__row"><i>▶</i><span>Video · SEO</span></div></div></div></div>
+          </a>
+          <a class="reel__item reel__item--uavs" href="work/uavs.html" data-i="3" data-cursor="View" aria-label="UAVS NSW">
+            <div class="reel__img"><img src="assets/img/community-sportday.jpg" alt="Everyone at UAVS Sports Day posing on the basketball court" width="900" height="1200" loading="lazy"></div>
+          </a>
+          </div></div>
+          <div class="reel__bar">
+            <p class="reel__name" aria-live="polite"><span class="reel__logo reel__logo--vna"><img src="assets/img/logos/brands/vietnam-airlines.svg" alt="" width="150" height="26"></span><span class="sr-only">Vietnam Airlines</span></p>
+            <div class="reel__progress"><i></i><i></i><i></i><i></i></div>
+            <span class="reel__count" aria-hidden="true"><b>01</b> / 04</span>
+            <span class="reel__hint" aria-hidden="true"><svg viewBox="0 0 32 16"><path d="M7 3L2 8l5 5M25 3l5 5-5 5M2 8h28"/></svg>Drag or swipe</span>
           </div>
-        </a>
-        <a class="case-card case-card--beer reveal" data-delay="1" href="work/beer-hanoi.html" data-cursor="View">
-          <div class="case-card__img"><img src="assets/img/beer-dinner.jpg" alt="A family toasting at a Tết dinner, from the Beer Hanoi TVC" loading="lazy"></div>
-          <div class="case-card__body">
+        </div>
+        <div class="reel__panel">
+          <article class="reel__info case-card--vna" data-i="0">
+            <span class="case-card__k">Ch. 1 · Instagram strategy</span>
+            <span class="case-card__big" aria-hidden="true">+20%<small>reach in two months</small></span>
+            <h3>Vietnam Airlines</h3>
+            <p>Stalled at 210K followers. I added a Reels-first lane for Gen Z without losing the 35–45 core.</p>
+            <div class="case-card__stat"><span>+2K followers</span><span>2–4% engagement</span></div>
+            <a class="btn btn--gold reel__go" href="work/vietnam-airlines.html">Read the case study <span class="arrow">→</span></a>
+          </article>
+          <article class="reel__info case-card--beer" data-i="1" hidden>
             <span class="case-card__k">Ch. 2 · Sound design</span>
+            <span class="case-card__big" aria-hidden="true">4M+<small>combined views</small></span>
             <h3>Beer Hanoi · Tết 2025</h3>
             <p>My voiceover and sound effects made a Tết reunion film sound like home, across a campaign that reached 4M+ combined views.</p>
             <div class="case-card__stat"><span>4M+ views</span><span>3 films</span></div>
-          </div>
-        </a>
-        <a class="case-card case-card--finder reveal" data-delay="2" href="work/finder.html" data-cursor="View">
-          <div class="case-card__img"><div class="fc" style="aspect-ratio:4/3; border-radius:0">
-            <div class="fc__top"><span class="fc__logo">finder</span><span class="fc__pill">Internship</span></div>
-            <p class="fc__h" style="color:#fff">Money content, made <em>scroll-worthy.</em></p>
-            <div class="fc__rows"><div class="fc__row best"><i>₿</i><span>Crypto Finder</span><b>Best pick</b></div><div class="fc__row"><i>▶</i><span>Video · SEO</span></div></div>
-          </div></div>
-          <div class="case-card__body">
+            <a class="btn btn--gold reel__go" href="work/beer-hanoi.html">Read the case study <span class="arrow">→</span></a>
+          </article>
+          <article class="reel__info case-card--finder" data-i="2" hidden>
             <span class="case-card__k">Ch. 3 · Social &amp; video</span>
+            <span class="case-card__big" aria-hidden="true">+5%<small>reach in a month</small></span>
             <h3>Finder</h3>
             <p>Memes, Shorts and founder content for a crypto audience: about 10 Shorts and 3 long videos in two weeks, +5% reach in a month.</p>
             <div class="case-card__stat"><span>+5% reach</span><span>4–5K views</span></div>
-          </div>
-        </a>
-        <a class="case-card case-card--uavs reveal" data-delay="3" href="work/uavs.html" data-cursor="View">
-          <div class="case-card__img"><img src="assets/img/community-sportday.jpg" alt="Everyone at UAVS Sports Day posing on the basketball court" loading="lazy"></div>
-          <div class="case-card__body">
+            <a class="btn btn--gold reel__go" href="work/finder.html">Read the case study <span class="arrow">→</span></a>
+          </article>
+          <article class="reel__info case-card--uavs" data-i="3" hidden>
             <span class="case-card__k">Ch. 4 · Community</span>
+            <span class="case-card__big" aria-hidden="true">4<small>events</small></span>
             <h3>UAVS NSW</h3>
             <p>Four events, four identities, and photography built so every shared photo also carries the sponsors.</p>
             <div class="case-card__stat"><span>4 events</span><span>Media lead</span></div>
-          </div>
-        </a>
+            <a class="btn btn--gold reel__go" href="work/uavs.html">Read the case study <span class="arrow">→</span></a>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -180,48 +195,51 @@
           <h2 class="display h2 reveal" data-delay="1">Clients &amp; <em>Collaborators</em></h2>
           <hr class="rule reveal" data-delay="2">
         </div>
-        <p class="section__note reveal" data-delay="2">From global FMCG and a national airline to creative agencies. Hover each brand.</p>
+        <p class="section__note reveal" data-delay="2">From global FMCG and a national airline to creative agencies.</p>
       </div>
 
       <div class="brands">
-        <article class="brand brand--tbwa reveal" data-cursor="TBWA\">
+        <article class="brand brand--vna brand--big" data-cursor="VNA">
+          <svg class="lotus" viewBox="0 0 120 80" aria-hidden="true"><g fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round"><path d="M60 74C48 62 48 38 60 10c12 28 12 52 0 64z"/><path d="M60 74C42 70 30 56 28 34c14 6 26 20 32 40z"/><path d="M60 74c18-4 30-18 32-40-14 6-26 20-32 40z"/><path d="M60 74C38 76 20 66 10 50c18-2 36 8 50 24z"/><path d="M60 74c22 2 40-8 50-24-18-2-36 8-50 24z"/></g></svg>
+          <img class="brand__plane" src="assets/img/vna-plane-cutout.png" alt="" aria-hidden="true" width="858" height="259">
+          <div class="brand__logo"><img src="assets/img/logos/brands/vietnam-airlines.svg" alt="Vietnam Airlines"></div>
+          <p class="brand__k">Client · Instagram strategy</p><p class="brand__t">Golden lotus</p>
+          <a class="brand__go" href="work/vietnam-airlines.html">Read the case study <span class="arrow">→</span></a>
+        </article>
+
+        <article class="brand brand--bia brand--big" data-cursor="Dô!">
+          <span class="bubbles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="foam" aria-hidden="true"></span>
+          <img class="brand__bottle" src="assets/img/beer/bottle-bia-ha-noi.png" alt="" aria-hidden="true" width="256" height="875">
+          <div class="brand__logo"><img src="assets/img/logos/brands/habeco.png" alt="HABECO, maker of Bia Hà Nội"></div>
+          <p class="brand__k">Client · Bia Hà Nội</p><p class="brand__t">Coming home</p>
+          <a class="brand__go" href="work/beer-hanoi.html">Read the case study <span class="arrow">→</span></a>
+        </article>
+
+        <article class="brand brand--tbwa" data-cursor="TBWA\">
           <span class="brand__slash" aria-hidden="true"></span>
           <div class="brand__logo"><img src="assets/img/logos/brands/tbwa.svg" alt=""><b>TBWA</b></div>
           <p class="brand__k">Agency</p><p class="brand__t">Disruption<sup>®</sup></p>
           <span class="sr-only">TBWA</span>
         </article>
 
-        <article class="brand brand--omo reveal" data-delay="1" data-cursor="OMO">
+        <article class="brand brand--omo" data-cursor="OMO">
           <span class="bubbles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
           <div class="brand__logo"><img src="assets/img/logos/brands/omo.png" alt="OMO"></div>
           <div class="brand__sub"><img src="assets/img/logos/brands/unilever.svg" alt="Unilever"></div>
           <p class="brand__k">Unilever · Laundry</p><p class="brand__t">Dirt is Good</p>
         </article>
 
-        <article class="brand brand--vaseline reveal" data-delay="2" data-cursor="Vaseline">
-          <span class="drop" aria-hidden="true"></span>
-          <div class="brand__logo"><img src="assets/img/logos/brands/vaseline.svg" alt="Vaseline"></div>
-          <p class="brand__k">Unilever · Skin care</p><p class="brand__t">The blue jar</p>
-        </article>
-
-        <article class="brand brand--vna reveal" data-cursor="VNA">
-          <svg class="lotus" viewBox="0 0 120 80" aria-hidden="true"><g fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round"><path d="M60 74C48 62 48 38 60 10c12 28 12 52 0 64z"/><path d="M60 74C42 70 30 56 28 34c14 6 26 20 32 40z"/><path d="M60 74c18-4 30-18 32-40-14 6-26 20-32 40z"/><path d="M60 74C38 76 20 66 10 50c18-2 36 8 50 24z"/><path d="M60 74c22 2 40-8 50-24-18-2-36 8-50 24z"/></g></svg>
-          <img class="brand__plane" src="assets/img/vna-plane-cutout.png" alt="" aria-hidden="true">
-          <div class="brand__logo"><img src="assets/img/logos/brands/vietnam-airlines.svg" alt="Vietnam Airlines"></div>
-          <p class="brand__k">Client · Instagram</p><p class="brand__t">Golden lotus</p>
-        </article>
-
-        <article class="brand brand--zee reveal" data-delay="1" data-cursor="ZEE">
+        <article class="brand brand--zee" data-cursor="ZEE">
           <svg class="zz" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 L40 10 L80 50 L120 10 L160 50 L200 10 L240 50 L280 10 L320 50"/></svg>
           <div class="brand__logo"><img src="assets/img/logos/brands/zee.svg" alt="ZEE Agency"></div>
           <p class="brand__k">Agency · Hà Nội</p><p class="brand__t">Lifestyle-Focused™</p>
         </article>
 
-        <article class="brand brand--bia reveal" data-delay="2" data-cursor="Dô!">
-          <span class="bubbles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-          <span class="foam" aria-hidden="true"></span>
-          <div class="brand__logo"><img src="assets/img/logos/brands/habeco.png" alt="HABECO, maker of Bia Hà Nội"></div>
-          <p class="brand__k">Client · Bia Hà Nội</p><p class="brand__t">Since 1890</p>
+        <article class="brand brand--vaseline" data-cursor="Vaseline">
+          <span class="drop" aria-hidden="true"></span>
+          <div class="brand__logo"><img src="assets/img/logos/brands/vaseline.svg" alt="Vaseline"></div>
+          <p class="brand__k">Unilever · Skin care</p><p class="brand__t">The blue jar</p>
         </article>
       </div>
 
@@ -234,7 +252,7 @@
     <div class="wrap contact__grid">
       <div>
         <p class="eyebrow reveal">Work with me</p>
-        <h2 class="display reveal" data-delay="1">Let’s get <em>started.</em></h2>
+        <h2 class="display reveal" data-delay="1">Hiring in Sydney or Vietnam? <em>Let’s talk.</em></h2>
       </div>
       <ul class="contact__list reveal" data-delay="2">
         <li><span>Email</span><span class="contact__val"><a href="mailto:buithanhnhatstudent3@gmail.com">buithanhnhatstudent3@gmail.com</a><button class="copy" data-copy="buithanhnhatstudent3@gmail.com" aria-label="Copy email address">Copy</button></span></li>
@@ -246,13 +264,16 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="footer">
     <div class="wrap">
       <span>© <span data-year></span> Thanh (Nathan) Nhat Bui</span>
       <span>Marketing communications · Sydney</span>
+      <small class="footer__credit">Sydney Opera House photo by <a href="https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_-_Dec_2008.jpg" rel="noopener">Diliff</a>, cut out by me, <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>. Brand logos belong to their owners.</small>
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=20261025a"></script>
+  <script src="assets/js/main.js?v=20261124i"></script>
 </body>
 </html>
