@@ -61,6 +61,45 @@
     tick();
   });
 
+  // Measurement table: number each stage and give every row a brand moment as it lands
+  // (a plane crossing for Vietnam Airlines, a pour for Bia Hà Nội, a price tick for Finder).
+  const body = document.body;
+  const brand = body.classList.contains('case--vna') ? 'vna' : body.classList.contains('case--beer') ? 'beer' : body.classList.contains('case--finder') ? 'finder' : 'other';
+  const PLANE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" transform="rotate(90 12 12)"/></svg>';
+  document.querySelectorAll('.mplan tbody tr').forEach((tr, i) => {
+    const td = tr.firstElementChild;
+    td.insertAdjacentHTML('afterbegin', `<span class="mplan__no" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>`);
+    if (brand === 'vna') td.insertAdjacentHTML('beforeend', `<i class="mplan__fx mplan__fx--plane" aria-hidden="true">${PLANE}</i>`);
+    else if (brand === 'beer') td.insertAdjacentHTML('beforeend', '<i class="mplan__fx mplan__fx--pour" aria-hidden="true"></i>');
+    else if (brand === 'finder') td.insertAdjacentHTML('beforeend', '<i class="mplan__fx mplan__fx--tick" aria-hidden="true"></i>');
+  });
+
+  const setFly = () => document.querySelectorAll('.mplan tbody tr').forEach((tr) => tr.style.setProperty('--fly', `${tr.offsetWidth - 50}px`));
+  setFly(); addEventListener('resize', setFly);
+
+  // Pop-in for card groups: children rise and settle one after another when the group scrolls in.
+  const groups = [
+    ['.mplan tbody', 'tr'], ['.matrix', '.matrix__c'], ['.nextsteps ol', 'li'],
+    ['.pillar__meta', 'div'], ['.frame', '.frame__col'], ['.dash__grid', '.dash__card'],
+  ];
+  const popHosts = [];
+  groups.forEach(([host, child]) => document.querySelectorAll(host).forEach((h) => {
+    [...h.children].filter((c) => c.matches(child)).forEach((c, k) => { c.classList.add('pop'); c.style.setProperty('--k', k); });
+    popHosts.push(h);
+  }));
+  document.querySelectorAll('.pillar__feed, .nextsteps, .r-card, .diag__item, .readout__item').forEach((el) => popHosts.push(el));
+  if (reduce || !('IntersectionObserver' in window)) {
+    popHosts.forEach((h) => h.classList.add('is-in'));
+    document.documentElement.classList.add('pop-static');
+  } else {
+    document.documentElement.classList.add('pop-ready');
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('is-in'); io.unobserve(e.target);
+    }), { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    popHosts.forEach((h) => io.observe(h));
+  }
+
   if (!hasGsap || reduce) {
     document.documentElement.classList.add('no-motion');
     document.querySelectorAll('.hscroll').forEach((s) => s.classList.add('no-pin'));
