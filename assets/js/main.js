@@ -110,17 +110,25 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
       : defaultInner;
     if (!th && label) curtain.querySelector('.curtain__hi').textContent = label;
   };
-  const firstVisit = !store.get('nb-intro');
+  const local = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  // The intro plays once per visitor, and never when someone lands straight on a case study.
+  const onCase = /\/work\//.test(location.pathname);
+  const firstVisit = !local.get('nb-intro') && !onCase;
   const cameFromTransition = store.get('nb-transition') === '1';
   const arrivingTheme = cameFromTransition ? (store.get('nb-theme') || '') : '';
   dress(arrivingTheme);
   document.body.appendChild(curtain);
+  // The home hero plays its entrance once, timed to start as the curtain clears (or straight away when there is none).
+  const heroGo = () => document.documentElement.classList.add('hero-go');
   if (!reduce && (firstVisit || cameFromTransition)) {
     curtain.style.transition = 'none'; curtain.classList.add('is-on'); void curtain.offsetWidth; curtain.style.transition = '';
-    const hold = firstVisit ? 1300 : arrivingTheme ? 650 : 250;
-    window.addEventListener('load', () => setTimeout(() => { curtain.classList.remove('is-on'); curtain.classList.add('is-off'); }, hold));
-  }
-  store.set('nb-intro', '1'); store.set('nb-transition', '0'); store.set('nb-theme', '');
+    // Lift on DOM ready, not on window load, so slow images never hold the page hostage.
+    const hold = firstVisit ? 350 : arrivingTheme ? 300 : 120;
+    const lift = () => setTimeout(() => { curtain.classList.remove('is-on'); curtain.classList.add('is-off'); setTimeout(heroGo, 140); }, hold);
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lift); else lift();
+  } else if (reduce) heroGo();
+  else requestAnimationFrame(() => requestAnimationFrame(heroGo));
+  local.set('nb-intro', '1'); store.set('nb-transition', '0'); store.set('nb-theme', '');
 
   if (!reduce) {
     document.addEventListener('click', (e) => {
@@ -134,7 +142,7 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
       dress(theme, a.textContent.trim().slice(0, 28) || 'Xin chào');
       curtain.style.transition = 'none'; curtain.style.transform = 'translateY(-100%)'; void curtain.offsetWidth;
       curtain.style.transition = ''; curtain.style.transform = ''; curtain.classList.add('is-on');
-      setTimeout(() => { location.href = url.href; }, theme ? 1000 : 650);
+      setTimeout(() => { location.href = url.href; }, theme ? 480 : 380);
     });
     window.addEventListener('pageshow', (e) => { if (e.persisted) { curtain.classList.remove('is-on'); curtain.classList.add('is-off'); } });
   }
@@ -208,29 +216,6 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
     try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = VI ? 'Đã chép' : 'Copied'; b.classList.add('is-done'); setTimeout(() => { b.textContent = VI ? 'Sao chép' : 'Copy'; b.classList.remove('is-done'); }, 1800); } catch (e) {}
   }));
 
-  // Custom cursor + magnetic buttons (mouse only)
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
-    const ring = document.createElement('div'); ring.className = 'cursor'; ring.innerHTML = '<span></span>';
-    const dot = document.createElement('div'); dot.className = 'cursor-dot';
-    document.body.append(ring, dot);
-    let x = 0, y = 0, rx = 0, ry = 0;
-    addEventListener('mousemove', (e) => { x = e.clientX; y = e.clientY; dot.style.transform = `translate(${x}px, ${y}px)`; document.documentElement.classList.add('has-cursor'); });
-    document.addEventListener('mouseleave', () => document.documentElement.classList.remove('has-cursor'));
-    const loop = () => { rx += (x - rx) * .18; ry += (y - ry) * .18; ring.style.transform = `translate(${rx}px, ${ry}px)`; requestAnimationFrame(loop); };
-    loop();
-    const label = ring.querySelector('span');
-    document.addEventListener('mouseover', (e) => {
-      const t = e.target.closest('[data-cursor], .yt, a, button');
-      ring.classList.remove('is-link', 'is-label');
-      if (!t) return;
-      const text = t.dataset.cursor || (t.classList.contains('yt') ? 'Play' : '');
-      if (text) { label.textContent = text; ring.classList.add('is-label'); } else ring.classList.add('is-link');
-    });
-    document.querySelectorAll('.btn, .nav__cta').forEach((b) => {
-      b.addEventListener('mousemove', (e) => { const r = b.getBoundingClientRect(); b.style.translate = `${(e.clientX - r.left - r.width / 2) * .25}px ${(e.clientY - r.top - r.height / 2) * .35}px`; });
-      b.addEventListener('mouseleave', () => { b.style.translate = ''; });
-    });
-  }
 })();
 
 // ---------- Brand dressing for case studies ----------
@@ -574,47 +559,6 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
   if (!reduce) requestAnimationFrame(tick);
 })();
 
-// ---------- Selected work: brand odds and ends drifting behind the section ----------
-(() => {
-  const sec = document.getElementById('work');
-  if (!sec) return;
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const st = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
-  const I = {
-    plane: `<svg viewBox="0 0 24 24"><path d="M21 12c0-.8-.7-1.3-1.5-1.3H15L10.5 3H8.6l2.2 7.7H6.3L4.6 8.6H3l1 3.4-1 3.4h1.6l1.7-2.1h4.5L8.6 21h1.9l4.5-7.7h4.5c.8 0 1.5-.5 1.5-1.3z" fill="currentColor"/></svg>`,
-    lotus: `<svg viewBox="0 0 100 60"><path d="M50 8C60 22 60 40 50 52C40 40 40 22 50 8Z M50 52C34 46 24 32 26 16C40 22 48 36 50 52Z M50 52C66 46 76 32 74 16C60 22 52 36 50 52Z M50 52C30 54 14 46 6 34C22 32 40 40 50 52Z M50 52C70 54 86 46 94 34C78 32 60 40 50 52Z" ${st}/></svg>`,
-    cap: `<svg viewBox="0 0 100 100"><path d="${(() => { let d = ''; for (let i = 0; i < 36; i++) { const a = i / 36 * Math.PI * 2, r = i % 2 ? 42 : 47; d += `${i ? 'L' : 'M'}${(50 + Math.cos(a) * r).toFixed(1)} ${(50 + Math.sin(a) * r).toFixed(1)}`; } return d + 'Z'; })()}" ${st}/><circle cx="50" cy="50" r="30" ${st}/></svg>`,
-    coin: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" ${st}/><circle cx="50" cy="50" r="34" ${st} stroke-dasharray="3 6"/><path d="M42 32v36M48 32v-6M48 74v-6M42 32h14a9 9 0 0 1 0 18H42M42 50h16a9 9 0 0 1 0 18H42" ${st}/></svg>`,
-    star: `<svg viewBox="0 0 24 24"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z" fill="currentColor"/></svg>`,
-    aperture: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" ${st}/>${Array.from({ length: 6 }, (_, i) => `<path d="M50 6L62 46" ${st} transform="rotate(${i * 60} 50 50)"/>`).join('')}<circle cx="50" cy="50" r="14" ${st}/></svg>`,
-    bubbles: `<svg viewBox="0 0 60 60"><circle cx="20" cy="40" r="10" ${st}/><circle cx="42" cy="22" r="7" ${st}/><circle cx="44" cy="46" r="4" ${st}/></svg>`,
-    chart: `<svg viewBox="0 0 120 60"><path d="M4 52L30 36L52 42L80 18L116 8" ${st}/><path d="M104 6h12v12" ${st}/></svg>`,
-    sail: `<svg viewBox="0 0 120 60"><path d="M10 56Q8 30 30 10Q34 36 44 56Z M40 56Q40 22 70 4Q72 34 84 56Z M78 56Q80 34 104 22Q104 42 112 56Z M2 56H118" ${st}/></svg>`,
-  };
-  // [icon, left%, top%, size px, depth, tone, extra class]
-  const P = [
-    ['plane', 3, 6, 70, 'near', 'teal', ''], ['lotus', 84, 3, 120, 'mid', 'gold', ''], ['star', 50, 3, 22, 'near', 'gold', ''],
-    ['cap', 1, 40, 96, 'mid', 'red', ''], ['coin', 94, 34, 84, 'near', 'gold', ''], ['bubbles', 34, 10, 60, 'far', 'red', 'wf--hide-sm'],
-    ['aperture', 2, 80, 80, 'mid', 'purple', ''], ['chart', 72, 90, 130, 'far', 'blue', ''], ['sail', 36, 92, 150, 'mid', 'purple', ''],
-    ['plane', 62, 14, 40, 'far', 'teal', 'wf--hide-sm'], ['star', 96, 70, 18, 'near', 'gold', ''], ['star', 24, 58, 16, 'mid', 'gold', ''],
-    ['bubbles', 90, 84, 54, 'near', 'red', ''], ['coin', 18, 30, 44, 'far', 'blue', 'wf--hide-sm'], ['lotus', 56, 60, 90, 'far', 'teal', ''],
-    ['aperture', 44, 40, 56, 'far', 'purple', 'wf--hide-sm'], ['cap', 76, 55, 52, 'far', 'red', 'wf--hide-sm'], ['star', 8, 22, 14, 'near', 'gold', ''],
-  ];
-  const D = { far: 10, mid: 22, near: 38 };
-  const layer = document.createElement('div');
-  layer.className = 'work-float'; layer.setAttribute('aria-hidden', 'true');
-  layer.innerHTML = P.map(([k, x, y, s, d, tone, cls], i) => `<i class="wf wf--${d}${tone ? ' wf--' + tone : ''} ${cls}" style="left:${x}%;top:${y}%;--s:${s}px;--d:${D[d]};--t:${12 + (i % 5) * 2}s;--dl:-${(i * 1.7).toFixed(1)}s"><span>${I[k]}</span></i>`).join('');
-  sec.prepend(layer);
-  if (!reduce && matchMedia('(hover: hover)').matches) {
-    sec.addEventListener('pointermove', (e) => {
-      const r = sec.getBoundingClientRect();
-      layer.style.setProperty('--px', (((e.clientX - r.left) / r.width - .5) * -1).toFixed(3) + 'px');
-      layer.style.setProperty('--py', (((e.clientY - r.top) / r.height - .5) * -1).toFixed(3) + 'px');
-    });
-  }
-  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => sec.classList.toggle('is-still', !e.isIntersecting)).observe(sec);
-})();
-
 // ---------- Clients: tiles are dealt onto the table, then tilt toward the pointer ----------
 (() => {
   const grid = document.querySelector('.brands');
@@ -624,24 +568,11 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
   tiles.forEach((t, i) => {
     t.style.setProperty('--dl', `${(i * .08).toFixed(2)}s`);
     t.style.setProperty('--r0', `${i % 2 ? 4 : -4}deg`);
-    t.insertAdjacentHTML('beforeend', '<span class="brand__glare" aria-hidden="true"></span>');
   });
   if (reduce || !('IntersectionObserver' in window)) { grid.classList.add('is-in'); return; }
   grid.classList.add('js-deal');
   const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { grid.classList.add('is-in'); io.disconnect(); } }, { threshold: .2 });
   io.observe(grid);
-  if (!matchMedia('(hover: hover)').matches) return;
-  tiles.forEach((t) => {
-    t.addEventListener('pointermove', (e) => {
-      const r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      t.style.setProperty('--rx', `${((.5 - y) * 9).toFixed(2)}deg`);
-      t.style.setProperty('--ry', `${((x - .5) * 11).toFixed(2)}deg`);
-      t.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
-      t.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
-      t.classList.add('is-tilt');
-    });
-    t.addEventListener('pointerleave', () => { t.style.setProperty('--rx', '0deg'); t.style.setProperty('--ry', '0deg'); t.classList.remove('is-tilt'); });
-  });
 })();
 
 // About page: skill icons play in view and on hover; studies lighthouse; experience timeline.
@@ -679,3 +610,9 @@ document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
     addEventListener('scroll', fill, { passive: true }); addEventListener('resize', fill); fill();
   }
 })();
+
+// Opening a "How I measured it" toggle changes the page height: re-measure scroll triggers.
+document.addEventListener('toggle', (e) => {
+  if (!e.target.matches || !e.target.matches('details.measure')) return;
+  if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+}, true);
