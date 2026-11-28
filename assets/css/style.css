@@ -448,11 +448,11 @@ a { color: inherit; }
    Signature layer: intro curtain, page transitions, cursor,
    scroll progress, signature, magnetic buttons
    ========================================================== */
-:root { --script: "Dancing Script", "Brush Script MT", cursive; }
+:root { --script: var(--serif); }
 
 /* intro curtain / page transition */
 .curtain { position: fixed; inset: 0; z-index: 200; background: var(--oxblood); color: var(--cream); display: grid; place-items: center; pointer-events: none;
-  transform: translateY(-100%); transition: transform .7s cubic-bezier(.7, 0, .2, 1); }
+  transform: translateY(-100%); transition: transform .4s cubic-bezier(.7, 0, .2, 1); }
 .curtain.is-on { transform: translateY(0); pointer-events: auto; }
 .curtain.is-off { transform: translateY(100%); }
 .curtain__inner { display: grid; justify-items: center; gap: 18px; text-align: center; }
@@ -461,7 +461,7 @@ a { color: inherit; }
 .curtain__bars i:nth-child(odd) { animation-delay: -.5s; }
 .curtain__bars i:nth-child(3n) { animation-delay: -.25s; }
 @keyframes cbar { 0%, 100% { height: 18%; } 50% { height: 100%; } }
-.curtain__hi { font: 400 clamp(30px, 4vw, 52px)/1 var(--script); color: var(--gold); }
+.curtain__hi { font: italic 300 clamp(32px, 4vw, 52px)/1 var(--serif); color: var(--gold); letter-spacing: -.02em; }
 .curtain__name { font: 600 12px/1 var(--sans); letter-spacing: .4em; text-transform: uppercase; opacity: .75; }
 
 /* scroll progress */
@@ -624,7 +624,7 @@ a { color: inherit; }
 .side--tech h3 { color: var(--cream); }
 .side ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
 .side li { padding: 13px 0; border-top: 1px solid rgba(107, 31, 36, .15); font-size: 17px; }
-.side--tech li { border-top-color: rgba(246, 227, 203, .2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 15px; }
+.side--tech li { border-top-color: rgba(246, 227, 203, .2); font-variant-numeric: tabular-nums; }
 .sides__x { align-self: center; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--ink); font: 400 34px/1 var(--serif); }
 @media (max-width: 860px) { .sides { grid-template-columns: 1fr; } .sides__x { justify-self: center; } }
 
@@ -1378,3 +1378,125 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 3px s
   .p3d:nth-child(even) .p3d__back { inset: -14% -12% 26% 30%; }
   .p3d__text { position: relative; z-index: 2; }
 }
+
+/* ==========================================================
+   Consolidation pass (Nov 2026 c)
+   One type scale, a hero that fits one screen, scrapbook
+   frames retired, 44px tap targets on touch.
+   ========================================================== */
+:root {
+  --fs-xs: 12px;                              /* labels, kickers (caps) */
+  --fs-sm: 15px;                              /* buttons, nav, small facts */
+  --fs-md: 17px;                              /* body */
+  --fs-lg: clamp(18px, 1.45vw, 21px);         /* lede, contact links */
+  --fs-xl: clamp(21px, 1.8vw, 26px);          /* card titles, lead */
+  --fs-2xl: clamp(28px, 3vw, 44px);           /* h3 */
+  --fs-h2: clamp(40px, 5.2vw, 76px);          /* section headings */
+  --fs-h1: clamp(46px, min(6.6vw, 10.6svh), 96px);
+}
+body { font-size: var(--fs-md); }
+.eyebrow, .side__k, .fc__pill, .reel__hint, .case-card__k, .brand__k, .hero__logos-k,
+.curtain__name, .reel__count, .footer__credit, .contact__list li span:first-child { font-size: var(--fs-xs); }
+.btn, .nav__link, .brand__go, .footer, .footer span { font-size: var(--fs-sm); }
+.hero__lede, .contact__list { font-size: var(--fs-lg); }
+.brand__t, .fc__h { font-size: var(--fs-xl); }
+.side h3, .case-card h3, .reel__info h3 { font-size: var(--fs-2xl); }
+.h2, .display.h2, .contact .display { font-size: var(--fs-h2); }
+.hero h1 { font-size: var(--fs-h1); }
+
+/* Home hero: content and the "Worked with" logos sit on the first screen. */
+.hero { padding: clamp(88px, 12svh, 112px) 0 clamp(28px, 5svh, 56px); }
+.hero__lede { margin-top: clamp(18px, 3svh, 28px); }
+.hero__actions { margin-top: clamp(20px, 3.4svh, 32px); }
+.hero__logos { margin-top: clamp(24px, 4svh, 40px); }
+.hero__photo { width: min(380px, 100%, 42svh); }
+@media (max-width: 980px) { .hero__photo { width: min(320px, 78%); } }
+
+/* Stamp frame, tilt, tape and sticker stay (the site's photo signature); the signature line and props stay retired. */
+.stamp figcaption { font-size: var(--fs-sm); }
+.sig, .prop { display: none !important; }
+
+/* Tap targets: at least 44px on touch screens. */
+@media (pointer: coarse), (max-width: 760px) {
+  .nav__lang a { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; padding: 0 10px; }
+  .copy { min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; }
+  .brand__go, .xp__link, .p3d__text a, .chapter-card a { min-height: 44px; display: inline-flex; align-items: center; }
+  .contact__list a { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+.nav a.nav__link { font-size: var(--fs-sm); }
+.nav__brand { font-size: var(--fs-lg); }
+.nav__lang a, .copy, .brand__k, .brand__stat small, .reel__stats span, .fc__top b { font-size: var(--fs-xs); }
+.sides__x { font-size: var(--fs-2xl); }
+@media (max-width: 760px) { .nav a.nav__link { font-size: 14px; } }
+/* About page on the shared scale */
+.study__k { font-size: var(--fs-xs); }
+.xp__org, .role-pills li, .skill__in, .skill__d, .name-tag span { font-size: var(--fs-sm); }
+.study__note, .xp__card p { font-size: var(--fs-md); }
+.xp__when, .contact__val a { font-size: var(--fs-lg); }
+.about-bio__lead, .skill h3, .xp__card h3 { font-size: var(--fs-xl); }
+.study__deg { font-size: var(--fs-2xl); }
+.next-band .display { font-size: var(--fs-h2); }
+.about-hero h1.display, .projects-head h1.display { font-size: var(--fs-h1); }
+/* Projects page on the shared scale */
+.chapter-index a span { font-size: var(--fs-sm); }
+.p3d__kick .chapter { font-size: var(--fs-md); }
+.projects-head .lede, .p3d__text .project__lead { font-size: var(--fs-lg); }
+.p3d__text h2 { font-size: var(--fs-h2); }
+@media (pointer: coarse), (max-width: 760px) {
+  .nav a.nav__link { min-height: 44px; display: inline-flex; align-items: center; padding-block: 0; }
+  .nav__brand { min-height: 44px; min-width: 44px; justify-content: center; }
+  .skip:focus { min-height: 44px; display: inline-flex; align-items: center; }
+}
+/* Phone nav: 44px-tall targets that still fit 375px. */
+@media (max-width: 760px) {
+  .nav__lang { padding: 2px; margin-left: 2px; }
+  .nav__lang a { min-width: 36px; padding: 0 6px; }
+  .nav a.nav__link { padding-inline: 9px; font-size: 13px; }
+  .nav__brand { min-width: 34px; margin-right: 0; }
+}
+/* Headline words (about, projects) */
+.split-css .w > span { animation-duration: .95s; animation-timing-function: cubic-bezier(.16, 1, .3, 1); animation-delay: calc(var(--i) * 50ms + 120ms); }
+
+/* ---------- Home hero entrance (Nov 2026 d) ----------
+   One sequence that starts as the curtain clears (html.hero-go):
+   drum settles, photo wipes open, headline rises word by word with a beat
+   before the gold line, then lede, buttons and logos follow. ~1.4s in all. */
+:root { --out: cubic-bezier(.16, 1, .3, 1); }
+.hero .drum { opacity: 0; scale: .86; transition: opacity 1.6s ease, scale 2.2s var(--out); }
+.hero-go .hero .drum { opacity: .07; scale: 1; }
+.hero .reveal, .hero .reveal.is-in { opacity: 0; translate: 0 34px; transition: opacity .8s ease, translate 1.1s var(--out); transition-delay: var(--hd, 0s); }
+.hero-go .hero .reveal { opacity: 1; translate: 0 0; }
+.hero .eyebrow { --hd: .05s; }
+.hero__lede { --hd: .5s; }
+.hero__actions { --hd: .6s; }
+.hero__logos { --hd: .72s; }
+/* photo: the stamp pops up and settles into its tilt, then the tape sticks and the sticker lands */
+.hero .hero__photo.reveal { opacity: 1; translate: none; }
+.hero .hero__photo .stamp-wrap, .hero .hero__photo .tape, .hero .hero__photo .sticker { opacity: 0; }
+.hero-go .hero .hero__photo .stamp-wrap { opacity: 1; animation: heroPop 1.1s .15s cubic-bezier(.34, 1.4, .64, 1) backwards; }
+.hero-go .hero .hero__photo .tape { opacity: 1; animation: heroTape .45s .85s var(--out) backwards; }
+.hero-go .hero .hero__photo .sticker { opacity: 1; animation: heroSticker .7s 1s cubic-bezier(.34, 1.6, .64, 1) backwards; }
+@keyframes heroPop { from { opacity: 0; translate: 0 70px; scale: .82; rotate: -6deg; } 40% { opacity: 1; } }
+@keyframes heroTape { from { opacity: 0; scale: 1.6 1.6; } }
+@keyframes heroSticker { from { opacity: 0; scale: 0; rotate: -60deg; } }
+/* headline: words wait for the curtain, then rise; the gold line lands a beat later */
+.hero .split-css .w > span { animation-duration: .95s; animation-timing-function: var(--out); animation-delay: calc(var(--i) * 45ms + .1s); animation-play-state: paused; }
+.hero .split-css em .w > span { animation-delay: calc(var(--i) * 45ms + .3s); }
+.hero-go .hero .split-css .w > span { animation-play-state: running; }
+@media (prefers-reduced-motion: reduce) {
+  .hero .drum { scale: 1; transition: opacity .3s; }
+  .hero .reveal, .hero .reveal.is-in { translate: none; transition: opacity .3s; }
+  .hero-go .hero .hero__photo .stamp-wrap, .hero-go .hero .hero__photo .tape, .hero-go .hero .hero__photo .sticker { animation: none; }
+  .hero .split-css .w > span { transform: none; animation: none; }
+}
+
+/* Scroll reveal: a smooth pop up, noticeable on every section (Nov 2026 e). */
+.reveal { opacity: 0; translate: 0 48px; scale: .96; transition: opacity .9s ease, translate 1.1s cubic-bezier(.16, 1, .3, 1), scale 1.1s cubic-bezier(.16, 1, .3, 1); }
+.reveal.is-in { opacity: 1; translate: 0 0; scale: 1; }
+.reveal[data-delay="1"] { transition-delay: .1s; }
+.reveal[data-delay="2"] { transition-delay: .2s; }
+.reveal[data-delay="3"] { transition-delay: .3s; }
+.reel.reveal { scale: none; }
+.hero .reveal { scale: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { translate: none; scale: none; transition: opacity .4s; } }
